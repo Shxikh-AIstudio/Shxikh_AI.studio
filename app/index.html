@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f0e6">
+<title>11.11 — Your Life, Your System</title>
+
+<style>
+:root {
+  --bg: #f5f0e6;
+  --card: #fffdf8;
+  --text: #302f27;
+  --muted: #858274;
+  --accent: #788365;
+  --soft: #e8e6d9;
+}
+body.dark {
+  --bg: #24251f;
+  --card: #303129;
+  --text: #f5f0e6;
+  --muted: #b5b09f;
+  --accent: #a5b18a;
+  --soft: #414236;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  transition: .25s;
+}
+header {
+  padding: 24px 20px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { font-size: 25px; font-weight: 800; letter-spacing: 2px; }
+.tag { color: var(--muted); font-size: 11px; margin-top: 4px; }
+button { cursor: pointer; font: inherit; }
+.theme {
+  border: 0; border-radius: 50%; width: 42px; height: 42px;
+  background: var(--card); color: var(--text); font-size: 19px;
+}
+main { padding: 10px 18px 100px; max-width: 600px; margin: auto; }
+.welcome {
+  padding: 24px; border-radius: 25px;
+  background: linear-gradient(135deg, #dfe3d2, #f0e8d7);
+  color: #353a2c; position: relative; overflow: hidden;
+}
+body.dark .welcome {
+  background: linear-gradient(135deg, #414b38, #39362d);
+  color: #fff8e9;
+}
+.welcome small { letter-spacing: 1px; }
+.welcome h1 { font-size: 27px; margin: 13px 0 8px; }
+.welcome p { font-size: 13px; line-height: 1.6; }
+.date { color: var(--muted); font-size: 12px; margin: 22px 3px 12px; }
+.section-title {
+  font-size: 17px; font-weight: 700; margin: 23px 2px 12px;
+}
+.progress-card {
+  background: var(--card); border-radius: 20px; padding: 18px;
+}
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.muted { color: var(--muted); font-size: 12px; }
+.bar { height: 8px; background: var(--soft); border-radius: 10px; margin-top: 15px; overflow: hidden; }
+.fill { height: 100%; width: 0%; background: var(--accent); border-radius: 10px; transition: .3s; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.card {
+  background: var(--card); padding: 17px; border-radius: 20px;
+  min-width: 0;
+}
+.icon { font-size: 24px; margin-bottom: 13px; }
+.card h3 { font-size: 14px; margin: 0 0 7px; }
+.card p { color: var(--muted); font-size: 12px; margin: 0; line-height: 1.5; }
+.prayers { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
+.prayer {
+  border: 0; background: var(--card); color: var(--text);
+  border-radius: 14px; padding: 12px 2px; font-size: 11px;
+}
+.prayer span { display: block; font-size: 18px; margin-bottom: 8px; }
+.prayer.done { background: var(--accent); color: white; }
+.action {
+  border: 0; border-radius: 12px; padding: 11px 14px;
+  background: var(--accent); color: white; font-size: 12px;
+}
+.dhikr { text-align: center; }
+.count { font-size: 42px; font-weight: 700; margin: 12px; }
+.bottom {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-around; padding: 13px 4px;
+  background: var(--card); border-top: 1px solid var(--soft);
+}
+.bottom button { border: 0; background: none; color: var(--muted); font-size: 11px; }
+.bottom span { display: block; font-size: 20px; margin-bottom: 4px; }
+footer { text-align: center; color: var(--muted); font-size: 11px; padding: 25px 0; }
+</style>
+</head>
+
+<body>
+<header>
+  <div>
+    <div class="logo">11.11<span style="color:var(--accent)">.</span></div>
+    <div class="tag">YOUR LIFE. YOUR SYSTEM.</div>
+  </div>
+  <button class="theme" id="themeBtn" aria-label="Toggle theme">☾</button>
+</header>
+
+<main>
+  <section class="welcome">
+    <small>YOUR DAILY SPACE ✦</small>
+    <h1>Assalamu Alaikum 🌿</h1>
+    <p>A new day, a fresh intention.<br>Take one small step towards a better you.</p>
+  </section>
+
+  <div class="date" id="today"></div>
+
+  <div class="section-title">Your Daily Progress</div>
+  <section class="progress-card">
+    <div class="row">
+      <div><strong id="progressText">0% completed</strong><div class="muted">Every small step counts.</div></div>
+      <div style="font-size:27px">🌱</div>
+    </div>
+    <div class="bar"><div class="fill" id="progressBar"></div></div>
+  </section>
+
+  <div class="section-title">Your Life</div>
+  <section class="grid">
+    <div class="card"><div class="icon">🕌</div><h3>Namaz Tracker</h3><p id="prayerSummary">0 of 5 completed</p></div>
+    <div class="card"><div class="icon">💪</div><h3>Fitness</h3><p>Build your strength, one day at a time.</p></div>
+    <div class="card"><div class="icon">🔁</div><h3>Habits</h3><p>Small habits. Meaningful change.</p></div>
+    <div class="card"><div class="icon">🌙</div><h3>Sleep</h3><p>Rest well. Reset tomorrow.</p></div>
+  </section>
+
+  <div class="section-title">Prayer Check-in</div>
+  <section class="prayers" id="prayers">
+    <button class="prayer" data-name="Fajr"><span>🌅</span>Fajr</button>
+    <button class="prayer" data-name="Dhuhr"><span>☀️</span>Dhuhr</button>
+    <button class="prayer" data-name="Asr"><span>🌤️</span>Asr</button>
+    <button class="prayer" data-name="Maghrib"><span>🌇</span>Maghrib</button>
+    <button class="prayer" data-name="Isha"><span>🌙</span>Isha</button>
+  </section>
+
+  <div class="section-title">Dhikr Counter 📿</div>
+  <section class="progress-card dhikr">
+    <div class="muted">SUBHANALLAH</div>
+    <div class="count" id="count">0</div>
+    <button class="action" id="countBtn">+ Count</button>
+    <button class="action" id="resetBtn" style="background:var(--soft);color:var(--text)">Reset</button>
+  </section>
+
+  <div class="section-title">Today's Intention</div>
+  <section class="progress-card">
+    <div class="row">
+      <div><strong>Move forward, gently.</strong><div class="muted" style="margin-top:7px">Progress over perfection.</div></div>
+      <span style="font-size:25px">🎯</span>
+    </div>
+  </section>
+
+  <footer>Made with intention · KAI AI</footer>
+</main>
+
+<nav class="bottom">
+  <button><span>⌂</span>Home</button>
+  <button><span>◷</span>Progress</button>
+  <button><span>▦</span>Calendar</button>
+  <button id="settingsBtn"><span>⚙</span>Settings</button>
+</nav>
+
+<script>
+const today = new Date();
+document.getElementById("today").textContent =
+  today.toLocaleDateString("en-IN", {
+    weekday:"long", day:"numeric", month:"long", year:"numeric"
+  });
+
+const themeBtn = document.getElementById("themeBtn");
+if (localStorage.getItem("1111-theme") === "dark") {
+  document.body.classList.add("dark");
+  themeBtn.textContent = "☀";
+}
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  const dark = document.body.classList.contains("dark");
+  localStorage.setItem("1111-theme", dark ? "dark" : "light");
+  themeBtn.textContent = dark ? "☀" : "☾";
+});
+
+const dayKey = "1111-" + today.toISOString().slice(0,10);
+let data;
+try { data = JSON.parse(localStorage.getItem(dayKey)) || {}; }
+catch { data = {}; }
+data.prayers ||= {};
+data.dhikr ||= 0;
+
+const prayerButtons = document.querySelectorAll(".prayer");
+function render() {
+  let completed = 0;
+  prayerButtons.forEach(btn => {
+    const done = !!data.prayers[btn.dataset.name];
+    btn.classList.toggle("done", done);
+    if (done) completed++;
+  });
+  document.getElementById("prayerSummary").textContent = completed + " of 5 completed";
+  document.getElementById("count").textContent = data.dhikr;
+  const percent = Math.round(completed / 6 * 100);
+  document.getElementById("progressText").textContent = percent + "% completed";
+  document.getElementById("progressBar").style.width = percent + "%";
+  localStorage.setItem(dayKey, JSON.stringify(data));
+}
+prayerButtons.forEach(btn => btn.addEventListener("click", () => {
+  data.prayers[btn.dataset.name] = !data.prayers[btn.dataset.name];
+  render();
+}));
+document.getElementById("countBtn").addEventListener("click", () => {
+  data.dhikr++;
+  render();
+});
+document.getElementById("resetBtn").addEventListener("click", () => {
+  if (confirm("Reset today's Dhikr count?")) {
+    data.dhikr = 0;
+    render();
+  }
+});
+document.getElementById("settingsBtn").addEventListener("click", () => {
+  alert("More settings, backup and custom themes will be added in the next versions.");
+});
+render();
+</script>
+</body>
+</html>
