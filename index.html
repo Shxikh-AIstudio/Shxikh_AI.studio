@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7faf7">
+  <meta name="description" content="Discover simple digital tools and apps designed to make everyday life better.">
+  <title>NEXORA — Simple tools. Better living.</title>  <style>
+    :root {
+      --bg: #f7faf7;
+      --surface: #ffffff;
+      --text: #18251d;
+      --muted: #738078;
+      --green: #258653;
+      --soft-green: #e8f5ec;
+      --border: #e6ece7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 36px, 1000px);
+      margin: auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .nav-label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero {
+      padding: 76px 0 50px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 13px;
+      border-radius: 30px;
+      background: var(--soft-green);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(35px, 8vw, 62px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      max-width: 700px;
+      margin: 0 auto 18px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      max-width: 480px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 18px;
+    }
+
+    .section-heading h2 {
+      font-size: 22px;
+    }
+
+    .section-heading span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 8px 30px rgba(25, 60, 35, 0.04);
+    }
+
+    .app-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 19px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: var(--soft-green);
+      color: var(--green);
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .app-info {
+      flex: 1;
+    }
+
+    .app-info h3 {
+      font-size: 21px;
+      margin-bottom: 4px;
+    }
+
+    .app-info p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-block;
+      color: var(--green);
+      background: var(--soft-green);
+      border-radius: 20px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .app-button {
+      display: inline-block;
+      padding: 11px 17px;
+      border-radius: 12px;
+      background: var(--green);
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .coming {
+      margin: 20px 0 65px;
+      border: 1px dashed #d4dfd6;
+      border-radius: 20px;
+      padding: 26px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .coming strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-top: 60px;
+      }
+
+      .app-card {
+        padding: 19px;
+        flex-wrap: wrap;
+      }
+
+      .app-icon {
+        width: 56px;
+        height: 56px;
+      }
+
+      .app-button {
+        width: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
+    }
+  </style></head><body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">NEXORA<span>.</span></a>
+        <span class="nav-label">Apps &amp; Projects</span>
+      </nav>
+    </div>
+  </header>  <main>
+    <section class="hero container">
+      <span class="badge">A little better, every day.</span>
+      <h1>Simple tools.<br><span>Better living.</span></h1>
+      <p>
+        A growing collection of thoughtful apps and useful digital
+        experiences, built to make everyday life simpler.
+      </p>
+    </section><section class="container">
+  <div class="section-heading">
+    <h2>Explore apps</h2>
+    <span>01 project</span>
+  </div>
+
+  <article class="app-card">
+    <div class="app-icon">11</div>
+
+    <div class="app-info">
+      <h3>11.11</h3>
+      <p>
+        Your personal space to track habits, namaz, fitness,
+        sleep and daily progress.
+      </p>
+      <span class="status">IN DEVELOPMENT</span>
+    </div>
+
+    <a class="app-button" href="#eleven">Coming soon</a>
+  </article>
+
+  <div class="coming" id="eleven">
+    <strong>More projects are on the way.</strong>
+    New tools and apps will appear here as they are built.
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="container">
+      Built with purpose. © <span id="year"></span>
+    </div>
+  </footer>  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script></body>
+</html>
