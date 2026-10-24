@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f0e6">
+<title>KAI AI — Islamic Knowledge</title>
+<style>
+:root {
+  --bg:#f5f0e6;
+  --card:#fffdf8;
+  --text:#302f27;
+  --muted:#858274;
+  --accent:#788365;
+  --soft:#e8e6d9;
+}
+body.dark {
+  --bg:#24251f;
+  --card:#303129;
+  --text:#f5f0e6;
+  --muted:#b5b09f;
+  --accent:#a5b18a;
+  --soft:#414236;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+}
+header {
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo {font-size:23px;font-weight:800;letter-spacing:1px}
+.sub {font-size:11px;color:var(--muted);margin-top:5px}
+button {font:inherit;cursor:pointer}
+.theme {
+  border:0;border-radius:50%;width:42px;height:42px;
+  background:var(--card);color:var(--text);font-size:19px;
+}
+main {max-width:650px;margin:auto;padding:10px 17px 35px}
+.hero {
+  padding:25px 22px;border-radius:23px;
+  background:linear-gradient(135deg,#e4e7d8,#f1e5d1);
+  color:#353a2c;
+}
+body.dark .hero {
+  background:linear-gradient(135deg,#414b38,#39362d);
+  color:#fff8e9;
+}
+.badge {font-size:11px;letter-spacing:1.5px}
+.hero h1 {font-size:27px;margin:15px 0 9px}
+.hero p {font-size:13px;line-height:1.7;margin-bottom:0}
+.section {font-size:16px;font-weight:bold;margin:24px 2px 12px}
+.card {
+  background:var(--card);padding:17px;border-radius:18px;margin-bottom:11px;
+}
+.card h3 {font-size:14px;margin:0 0 8px}
+.card p {font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+.topics {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topic {
+  background:var(--card);border:1px solid var(--soft);
+  color:var(--text);border-radius:17px;padding:15px 12px;text-align:left;
+}
+.topic span {font-size:23px;display:block;margin-bottom:10px}
+.topic strong {font-size:13px}
+.topic small {display:block;color:var(--muted);margin-top:5px;font-size:11px}
+.chat {
+  background:var(--card);border-radius:20px;padding:15px;
+}
+textarea {
+  width:100%;resize:vertical;min-height:95px;border:1px solid var(--soft);
+  border-radius:13px;padding:13px;background:var(--bg);color:var(--text);
+  font:14px Arial,sans-serif;outline:none;
+}
+.send {
+  margin-top:10px;border:0;background:var(--accent);color:white;
+  border-radius:12px;padding:13px;width:100%;font-weight:bold;
+}
+.note {font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}
+.answer {
+  display:none;margin-top:15px;padding:15px;border-radius:14px;
+  background:var(--bg);font-size:13px;line-height:1.7;
+}
+.detail {
+  display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--soft);
+}
+.outline {
+  border:1px solid var(--accent);background:transparent;color:var(--text);
+  border-radius:10px;padding:10px 12px;margin-top:12px;font-size:12px;
+}
+footer {text-align:center;padding:25px 5px;color:var(--muted);font-size:11px}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="logo">KAI AI <span style="color:var(--accent)">☾</span></div>
+    <div class="sub">ISLAMIC KNOWLEDGE ASSISTANT</div>
+  </div>
+  <button class="theme" id="theme" aria-label="Toggle theme">☾</button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="badge">KNOWLEDGE · EVIDENCE · CLARITY</div>
+    <h1>Assalamu Alaikum 🌿</h1>
+    <p>Explore Islamic questions through the Qur'an, authentic Hadith and recognized scholarly explanations.</p>
+  </section>
+
+  <div class="section">Ask an Islamic Question</div>
+  <section class="chat">
+    <textarea id="question" placeholder="Apna sawaal yahan likhein...&#10;Example: Wudu ke baare mein Qur'an kya kehta hai?"></textarea>
+    <button class="send" id="ask">Explore Your Question ↗</button>
+    <div class="note">Important: This preview is not connected to an AI or verified source database yet. It will not invent an Islamic answer.</div>
+    <div class="answer" id="answer">
+      <strong>Source verification required</strong>
+      <p id="answerText">Your question has not been sent to an AI service. Verified Qur'an, Hadith and scholarly sources must be connected before an evidence-based answer can be provided.</p>
+      <button class="outline" id="detailBtn">Read Detailed Explanation +</button>
+      <div class="detail" id="detail">
+        No religious ruling or reference has been generated. Once a verified source system is connected, this section will display relevant source texts, translations and references.
+      </div>
+    </div>
+  </section>
+
+  <div class="section">Explore Islamic Knowledge</div>
+  <section class="topics">
+    <button class="topic" data-topic="Qur'an"><span>📖</span><strong>Qur'an</strong><small>Ayat & translations</small></button>
+    <button class="topic" data-topic="Hadith"><span>📚</span><strong>Hadith</strong><small>Texts & references</small></button>
+    <button class="topic" data-topic="Islamic topics"><span>🕌</span><strong>Islamic Topics</strong><small>Explore common questions</small></button>
+    <button class="topic" data-topic="Scholarly explanations"><span>🔎</span><strong>Scholarly Views</strong><small>Recognized explanations</small></button>
+  </section>
+
+  <div class="section">Our Promise</div>
+  <section class="card">
+    <h3>Evidence before answers.</h3>
+    <p>KAI AI is being designed to distinguish Qur'anic verses, Hadith, scholarly interpretations and general information. Unverified claims must not be presented as Islamic teachings.</p>
+  </section>
+
+  <footer>11.11 × KAI AI<br>Your Life. Your System.</footer>
+</main>
+
+<script>
+const themeBtn = document.getElementById("theme");
+if(localStorage.getItem("kai-theme")==="dark"){
+  document.body.classList.add("dark");
+  themeBtn.textContent="☀";
+}
+themeBtn.addEventListener("click",()=>{
+  document.body.classList.toggle("dark");
+  const dark=document.body.classList.contains("dark");
+  localStorage.setItem("kai-theme",dark?"dark":"light");
+  themeBtn.textContent=dark?"☀":"☾";
+});
+
+document.getElementById("ask").addEventListener("click",()=>{
+  const question=document.getElementById("question").value.trim();
+  if(!question){
+    alert("Please enter your question first.");
+    return;
+  }
+  document.getElementById("answer").style.display="block";
+  document.getElementById("answerText").textContent=
+    "Your question: “"+question+"” — No AI answer has been generated because verified Islamic sources are not connected yet.";
+  document.getElementById("detail").style.display="none";
+  document.getElementById("detailBtn").textContent="Read Detailed Explanation +";
+});
+document.getElementById("detailBtn").addEventListener("click",()=>{
+  const detail=document.getElementById("detail");
+  const open=detail.style.display==="block";
+  detail.style.display=open?"none":"block";
+  document.getElementById("detailBtn").textContent=
+    open?"Read Detailed Explanation +":"Hide Detailed Explanation −";
+});
+document.querySelectorAll(".topic").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const q=document.getElementById("question");
+    q.value=btn.dataset.topic+" ke baare mein verified Islamic sources se samjhaiye.";
+    q.focus();
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>
